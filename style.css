@@ -1,0 +1,122 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  .coming-soon-container {
+    min-height: 100vh;
+    background-color: #111827;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .background-animated {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+  
+  .floating-circle {
+    position: absolute;
+    background-color: rgba(255, 165, 0, 0.1);
+    border-radius: 50%;
+    opacity: 0.1;
+    animation: float infinite ease-in-out;
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  .content {
+    max-width: 600px;
+    width: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  
+  .content.fade-in {
+    opacity: 1;
+  }
+  
+  .brand-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+  }
+  
+  .tagline {
+    font-size: 1.25rem;
+    color: #f97316;
+    font-style: italic;
+    font-weight: 500;
+    height: 2rem;
+  }
+  
+  .cursor {
+    animation: blink 1s step-end infinite;
+  }
+  
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+  
+  .line-divider {
+    width: 80px;
+    height: 4px;
+    background-color: #f97316;
+    margin: 1rem auto;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.6;
+    }
+  }
+  
+  .coming-message h2 {
+    font-size: 1.75rem;
+    color: #d1d5db;
+  }
+  
+  .coming-message p {
+    font-size: 1.125rem;
+    color: #9ca3af;
+  }
+  
+  .footer {
+    margin-top: 2rem;
+    border-top: 1px solid #374151;
+    padding-top: 1rem;
+  }
+  
+  .footer p {
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+  
