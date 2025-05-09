@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import './App.css'
-import ComingSoon from './components/comingSoon'
+import ComingSoonPage from './components/ComingSoonPage'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-      <ComingSoon/>
+      <ComingSoonPage/>
   )
   
 }
