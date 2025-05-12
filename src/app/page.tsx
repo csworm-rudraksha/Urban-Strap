@@ -75,8 +75,7 @@ const HomePage = async () => {
     </p>
     <p className="text-base md:text-lg text-gray-700 mt-4 leading-relaxed">
       Whether you're out in the city or chilling with friends, our collections
-      help you show up with confidence and ease. We don’t follow trends — we
-      create a vibe.
+      help you show up with confidence and ease. We don&rsquo;t follow trends — we create a vibe.
     </p>
     <p className="mt-6 font-semibold text-gray-900">Urban-Strap. Wear your attitude.</p>
   </div>
