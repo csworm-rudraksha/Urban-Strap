@@ -2,7 +2,6 @@
   "/page": "app/page.js",
   "/list/page": "app/list/page.js",
   "/[slug]/page": "app/[slug]/page.js",
-  "/manual-checkout/page": "app/manual-checkout/page.js",
   "/login/page": "app/login/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/manual-checkout/page": "app/manual-checkout/page.js"
 }
