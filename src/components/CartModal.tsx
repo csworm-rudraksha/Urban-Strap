@@ -13,28 +13,14 @@ const CartModal = () => {
   const wixClient = useWixClient();
   const { cart, isLoading, removeItem } = useCartStore();
 
-  const handleCheckout = async () => {
-    try {
-      const checkout =
-        await wixClient.currentCart.createCheckoutFromCurrentCart({
-          channelType: currentCart.ChannelType.WEB,
-        });
-
-      const { redirectSession } =
-        await wixClient.redirects.createRedirectSession({
-          ecomCheckout: { checkoutId: checkout.checkoutId },
-          callbacks: {
-            postFlowUrl: window.location.origin,
-            thankYouPageUrl: `${window.location.origin}/success`,
-          },
-        });
-
-      if (redirectSession?.fullUrl) {
-        window.location.href = redirectSession.fullUrl;
-      }
-    } catch (err) {
-      console.log(err);
+  const handleCheckout = () => {
+    if (!cart || !cart.lineItems || cart.lineItems.length === 0) {
+      alert("Your cart is empty.");
+      return;
     }
+  
+    // Redirect to manual checkout page
+    window.location.href = "/manual-checkout";
   };
 
   return (

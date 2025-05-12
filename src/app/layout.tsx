@@ -8,8 +8,10 @@ import { WixClientContextProvider } from "@/context/wixContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lama Dev E-Commerce Application",
-  description: "A complete e-commerce application with Next.js and Wix",
+  title: "Urban-Strap",
+  icons: {
+    icon: "/favicon.png",},
+  description: "Urban-Strap - Your one-stop shop for trendy and stylish accessories.",
 };
 
 export default function RootLayout({

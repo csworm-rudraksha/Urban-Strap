@@ -14,12 +14,14 @@ type CartState = {
     quantity: number
   ) => void;
   removeItem: (wixClient: WixClient, itemId: string) => void;
+  clearCart: (wixClient: WixClient) => void;
 };
 
 export const useCartStore = create<CartState>((set) => ({
-  cart: [],
+  cart: [] as unknown as currentCart.Cart,
   isLoading: true,
   counter: 0,
+
   getCart: async (wixClient) => {
     try {
       const cart = await wixClient.currentCart.getCurrentCart();
@@ -32,8 +34,9 @@ export const useCartStore = create<CartState>((set) => ({
       set((prev) => ({ ...prev, isLoading: false }));
     }
   },
+
   addItem: async (wixClient, productId, variantId, quantity) => {
-    set((state) => ({ ...state, isLoading: true }));
+    set({ isLoading: true });
     const response = await wixClient.currentCart.addToCurrentCart({
       lineItems: [
         {
@@ -53,16 +56,29 @@ export const useCartStore = create<CartState>((set) => ({
       isLoading: false,
     });
   },
-  removeItem: async (wixClient, itemId) => {
-    set((state) => ({ ...state, isLoading: true }));
-    const response = await wixClient.currentCart.removeLineItemsFromCurrentCart(
-      [itemId]
-    );
 
+  removeItem: async (wixClient, itemId) => {
+    set({ isLoading: true });
+    const response = await wixClient.currentCart.removeLineItemsFromCurrentCart([itemId]);
     set({
       cart: response.cart,
       counter: response.cart?.lineItems.length,
       isLoading: false,
     });
+  },
+
+  clearCart: async (wixClient) => {
+    set({ isLoading: true });
+    try {
+      await wixClient.currentCart.deleteCurrentCart();
+      set({
+        cart: { lineItems: [], subtotal: { amount: 0 } } as currentCart.Cart,
+        counter: 0,
+        isLoading: false,
+      });
+    } catch (err) {
+      console.error("Error clearing cart:", err);
+      set({ isLoading: false });
+    }
   },
 }));
